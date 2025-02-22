@@ -4,7 +4,7 @@
 1. 在[项目文件](https://github.com/fengjiayou/HarmonyOS-HyperOS-iOS-Font-Integration/tree/main/HarmonyOS%20Sans)中找到想要用的字体并复制路径
 （如：` HarmonyOS Sans/HarmonyOS_Sans_Condensed_Italic/HarmonyOS_Sans_Condensed_Black_Italic.ttf ` ）
 
-2. 访问[https://fengjiayou.github.io/HarmonyOS-HyperOS-iOS-Font-Integration/](https://fengjiayou.github.io/HarmonyOS-HyperOS-iOS-Font-Integration/)在对话框中输入路径生成链接
+2. 访问[https://fengjiayou.github.io/HarmonyOS-HyperOS-iOS-Font-Integration/index.html](https://fengjiayou.github.io/HarmonyOS-HyperOS-iOS-Font-Integration/index.html)在对话框中输入路径生成链接
 （如: 输入 ` HarmonyOS Sans/HarmonyOS_Sans_Condensed_Italic/HarmonyOS_Sans_Condensed_Black_Italic.ttf ` 输出 ` https://fengjiayou.github.io/HarmonyOS-HyperOS-iOS-Font-Integration/HarmonyOS Sans/HarmonyOS_Sans_Condensed_Italic/HarmonyOS_Sans_Condensed_Black_Italic.ttf `）
 
 ### 调用
