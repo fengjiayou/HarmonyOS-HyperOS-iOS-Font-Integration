@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Font Link Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .input-group {
+            display: flex;
+            gap: 10px;
+            margin: 2rem 0;
+        }
+        input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 20px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        #result {
+            display: none;
+            margin-top: 1rem;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 4px;
+            word-break: break-all;
+        }
+        .copy-btn {
+            margin-left: 10px;
+            background: #28a745;
+        }
+        .error {
+            color: #dc3545;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>字体链接生成器</h1>
+    <div class="input-group">
+        <input type="text" id="fontPath" placeholder="输入字体路径（如：HarmonyOS Sans/...）">
+        <button onclick="generateLink()">生成链接</button>
+    </div>
+    <div id="result">
+        <span id="generatedLink"></span>
+        <button class="copy-btn" onclick="copyToClipboard()">复制</button>
+    </div>
+    <div id="error" class="error"></div>
+
+    <script>
+        const BASE_URL = 'https://fengjiayou.github.io/HarmonyOS-HyperOS-iOS-Font-Integration/';
+
+        function generateLink() {
+            const input = document.getElementById('fontPath').value.trim();
+            const errorDiv = document.getElementById('error');
+            const resultDiv = document.getElementById('result');
+
+            // 重置状态
+            errorDiv.textContent = '';
+            resultDiv.style.display = 'none';
+
+            // 合法性校验
+            if (!input) {
+                showError('路径不能为空');
+                return;
+            }
+
+            if (!/^[\w\s/-]+(\.[a-z]{1,4})?$/i.test(input)) {
+                showError('包含非法字符或文件格式不正确');
+                return;
+            }
+
+            // 构建完整链接
+            const fullLink = BASE_URL + input.replace(/ /g, '%20');
+            document.getElementById('generatedLink').textContent = fullLink;
+            resultDiv.style.display = 'block';
+        }
+
+        function copyToClipboard() {
+            const text = document.getElementById('generatedLink').textContent;
+            navigator.clipboard.writeText(text)
+                .then(() => alert('链接已复制!'))
+                .catch(err => showError('复制失败: ' + err));
+        }
+
+        function showError(message) {
+            document.getElementById('error').textContent = '错误: ' + message;
+        }
+    </script>
+</body>
+</html>
